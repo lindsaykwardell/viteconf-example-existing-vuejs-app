@@ -1,27 +1,36 @@
-module Main exposing (..)
+module Main exposing (main)
 
 import Browser
-import Html exposing (Html, button, div, text)
+import Html exposing (button, div, text)
 import Html.Events exposing (onClick)
 
-init = 0
 
-type Msg = Increment | Decrement
+init initialValue =
+    ( initialValue, Cmd.none )
 
-update : Msg -> Int -> Int
+
+type Msg
+    = Increment
+    | Decrement
+
+
+update : Msg -> Int -> ( Int, Cmd Msg )
 update msg model =
-  case msg of
-    Increment ->
-      model + 1
+    case msg of
+        Increment ->
+            ( model + 1, Cmd.none )
 
-    Decrement ->
-      model - 1
+        Decrement ->
+            ( model - 1, Cmd.none )
+
 
 view model =
-  div []
-    [ button [ onClick Decrement ] [ text "-" ]
-    , div [] [ text (String.fromInt model) ]
-    , button [ onClick Increment ] [ text "+" ]
-    ]
+    div []
+        [ button [ onClick Decrement ] [ text "-" ]
+        , div [] [ text (String.fromInt model) ]
+        , button [ onClick Increment ] [ text "+" ]
+        ]
 
-main = Browser.sandbox { init = init, update = update, view = view }
+
+main =
+    Browser.element { init = init, update = update, view = view, subscriptions = \_ -> Sub.none }

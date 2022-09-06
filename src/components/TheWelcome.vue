@@ -136,6 +136,6 @@ const ElmExample = elmBridge(Elm, {
     </template>
     <template #heading>Elm in Vue</template>
 
-    <ElmExample />
+    <ElmExample :flags="2" />
   </WelcomeItem>
 </template>
