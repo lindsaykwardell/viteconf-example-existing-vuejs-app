@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
 import WelcomeItem from "./WelcomeItem.vue";
 import DocumentationIcon from "./icons/IconDocumentation.vue";
 import ToolingIcon from "./icons/IconTooling.vue";
@@ -7,13 +6,10 @@ import EcosystemIcon from "./icons/IconEcosystem.vue";
 import CommunityIcon from "./icons/IconCommunity.vue";
 import SupportIcon from "./icons/IconSupport.vue";
 import { Elm } from "../Main.elm";
+import elmBridge from "elm-vue-bridge";
 
-const elmNode = ref(null);
-
-onMounted(() => {
-  Elm.Main.init({
-    node: elmNode.value,
-  });
+const ElmExample = elmBridge(Elm, {
+  name: "ElmExample",
 });
 </script>
 
@@ -140,6 +136,6 @@ onMounted(() => {
     </template>
     <template #heading>Elm in Vue</template>
 
-    <div ref="elmNode"></div>
+    <ElmExample />
   </WelcomeItem>
 </template>

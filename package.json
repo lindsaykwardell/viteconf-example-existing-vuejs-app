@@ -9,6 +9,7 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "elm-vue-bridge": "^1.2.4",
     "vite-plugin-elm": "^2.7.2",
     "vue": "^3.2.38"
   },
