@@ -5,8 +5,14 @@ import Html exposing (button, div, text)
 import Html.Events exposing (onClick)
 
 
-init initialValue =
-    ( initialValue, Cmd.none )
+type alias Flags =
+    { initialValue : Int
+    }
+
+
+init : Flags -> ( Int, Cmd Msg )
+init flags =
+    ( flags.initialValue, Cmd.none )
 
 
 type Msg

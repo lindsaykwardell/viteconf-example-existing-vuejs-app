@@ -10,6 +10,12 @@ import elmBridge from "elm-vue-bridge";
 
 const ElmExample = elmBridge(Elm, {
   name: "ElmExample",
+  props: {
+    initialValue: {
+      type: Number,
+      default: 5
+    }
+  }
 });
 </script>
 
@@ -136,6 +142,6 @@ const ElmExample = elmBridge(Elm, {
     </template>
     <template #heading>Elm in Vue</template>
 
-    <ElmExample :flags="2" />
+    <ElmExample :initialValue="4" />
   </WelcomeItem>
 </template>
